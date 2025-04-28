@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+
+:root {
+    /* colors */
+    --clr-white: #ffffff;
+    --clr-black: #000000;
+
+    --clr-grey950: #08070b;
+    --clr-grey900: #14131b;
+    --clr-grey850: #18171f;
+    --clr-grey800: #24232c;
+    --clr-grey700: #54535b;
+    --clr-grey600: #817d92;
+    --clr-grey200: #e6e5ea;
+
+    --clr-green200: #a4ff4f;
+    --clr-yellow300: #f8cd65;
+    --clr-orange400: #fb7c58;
+    --clr-red500: #f64a4a;
+
+    --background-gradient: linear-gradient(to right, #14131b, #08080b);
+
+    /* typography */
+    --font-style-jetbrains-mono: "JetBrains Mono", monospace, serif;
+
+    --lh-42px: 2.625rem;
+    --lh-32px: 2rem;
+    --lh-24px: 1.5rem;
+    --lh-20px: 1.25rem;
+
+    --ls-0px: 0;
+
+    --font-size-fluid-0: clamp(.75rem, 2vw, 1rem);
+    --font-size-fluid-1: clamp(1rem, 4vw, 1.5rem);
+    --font-size-fluid-2: clamp(1.5rem, 6vw, 2.5rem);
+    --font-size-fluid-3: clamp(2rem, 9vw, 3.5rem);
+
+    /* spacing */
+    --spacing-8px: 0.5rem;
+    --spacing-16px: 1rem;
+    --spacing-24px: 1.5rem;
+    --spacing-32px: 2rem;
+    --spacing-56px: 3.5rem;
+    --spacing-80px: 5rem;
+    --spacing-104px: 6.5rem;
+    --spacing-124px: 8rem;
+    --spacing-160px: 10rem;
+    --spacing-176px: 11rem;
+    --spacing-184px: 11.5rem;
+}
+
