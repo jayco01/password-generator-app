@@ -3,27 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
   <title>Password generator app</title>
 </head>
+
 <body>
 
-  Password Generator
+  <header>
+    <h1 class="title">Password Generator</h1>
+  </header>
 
-  P4$5W0rD!
 
-  Character Length
+  <main>
+    <section class="ps-output-wrapper" aria-label="generate password">
+      <p id="ps-output">P4$5W0rD!</p>
+      <button id="copy-btn" aria-label="copy Password to clipboard">
+        <img class="copy-btn__icon" src="images/icon-copy.svg" alt="copy">
+      </button>
+    </section> <!--closes ps-output-wrapper-->
 
-  Include Uppercase Letters
-  Include Lowercase Letters
-  Include Numbers
-  Include Symbols
 
-  Strength
+    <section class="parameter">
 
-  Generate
+      <div class="length-wrapper">
+        <div class="length-text">
+          <label for="length-setter" class="label-text">Character Length</label>
+          <p class="length-display">0</p>
+        </div>
+        <input type="range" id="length-setter" min="6" max="20" value="10">
+      </div> <!--closes length-wrapper-->
+
+      <div class="option-wrapper">
+        <div class="option">
+          <input type="checkbox" class="option__checkbox" id="uppercase">
+          <label class="label-text" for="uppercase">Include Uppercase Letters</label>
+        </div>
+        <div class="option">
+          <input type="checkbox" class="option__checkbox" id="lowercase">
+          <label class="label-text" for="lowercase">Include Lowercase Letters</label>
+        </div>
+        <div class="option">
+          <input type="checkbox" class="option__checkbox" id="numbers">
+          <label class="label-text" for="numbers">Include Numbers</label>
+        </div>
+        <div class="option">
+          <input type="checkbox" class="option__checkbox" id="symbols">
+          <label class="label-text" for="symbols">Include Symbols</label>
+        </div>
+      </div> <!--close option-wrapper-->
+
+      <div class="strength">
+        <p class="strength__title">Strength</p>
+        <div class="strength__gauge">
+          <p class="strength__text"></p>
+          <ul class="strength__bars">
+            <li class="strength__bar"></li>
+            <li class="strength__bar"></li>
+            <li class="strength__bar"></li>
+            <li class="strength__bar"></li>
+          </ul>
+        </div>
+      </div><!--closes strength-->
+
+      <button id="generate">Generate</button>
+      
+    </section> <!--closes parameter-->
+
+  </main>
 
 </body>
 </html>
