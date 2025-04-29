@@ -277,6 +277,7 @@ cursor: pointer;
     font-size: var(--font-size-fluid-2);
     line-height: var(--lh-fluid-2432);
     white-space: nowrap;
+    text-transform: uppercase;
 }
 
 .strength__bars {
