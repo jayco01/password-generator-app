@@ -120,6 +120,7 @@ main {
 #copy-btn {
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 
 .parameter {

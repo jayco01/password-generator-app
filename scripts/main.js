@@ -1,4 +1,6 @@
 const psOutput = document.getElementById("ps-output");
+const copied = document.querySelector(".copy");
+const copyBtn = document.getElementById("copy-btn");
 
 const lengthDisplay = document.querySelector(".length__display");
 const lengthSetter = document.getElementById("length-setter");
@@ -18,6 +20,13 @@ let lowercaseChar = String.fromCharCode(Math.floor(Math.random()*(122-97+1)) + 9
 let numbersChar = String.fromCharCode(Math.floor(Math.random()*(57-48+1)) + 48);
 let symbolsChar = String.fromCharCode(Math.floor(Math.random()*(47-33+1)) + 33);
 
+
+// copy text to clipboard
+copyBtn.addEventListener('click', function() {
+  let outputPassword = psOutput.textContent;
+
+  navigator.clipboard.writeText(outputPassword);
+});
 
 // calculating how much of the slider will be colored with green
 function setSliderColor() {
@@ -133,6 +142,10 @@ function reshufflePassword(strPassword) {
 // display password
 function diplayPassword() {
   let outputPassword = generatePassword();
+  if (outputPassword) {
   psOutput.textContent = reshufflePassword(outputPassword);
+  } else {
+    psOutput.textContent = 'P4$5W0rD!'
+  }
 }
 generateBtn.addEventListener("click", diplayPassword);
