@@ -7,9 +7,9 @@ const uppercaseCheckbox = document.getElementById("uppercase");
 const lowercaseCheckbox = document.getElementById("lowercase");
 const numbersCheckbox = document.getElementById("numbers");
 const symbolsCheckbox =  document.getElementById("symbols");
+const optionsList = document.querySelectorAll(".option__checkbox");
 
 const generateBtn = document.getElementById("generate");
-
 
 let lengthValue = Number(lengthDisplay.textContent);
 
@@ -31,6 +31,12 @@ function setSliderColor() {
 }
 setSliderColor();
 lengthSetter.addEventListener('input', setSliderColor);
+
+lengthSetter.addEventListener('input', function() {
+  lengthDisplay.textContent = Number(lengthSetter.value);
+  diplayPassword();
+})
+
 
 // generate the part of the password that meets the requirements
 function generateRequiredOptions() {
@@ -65,8 +71,6 @@ function getDefault() {
   else if (symbolsCheckbox.checked) {
     dafaultChar += String.fromCharCode(Math.floor(Math.random()*(47-33+1)) + 33);
   }
-  console.log('test')
-  console.log(dafaultChar)
   return dafaultChar
 }
 
@@ -112,7 +116,6 @@ function generatePassword() {
   return outputPassword;
 };
 
-
 // shuffle the order of each letter in the password
 function reshufflePassword(strPassword) {
   let passwordArray = strPassword.split('');
@@ -127,8 +130,9 @@ function reshufflePassword(strPassword) {
   return newPassword;
 }
 
-// Output password
-generateBtn.addEventListener("click", function() {
+// display password
+function diplayPassword() {
   let outputPassword = generatePassword();
   psOutput.textContent = reshufflePassword(outputPassword);
-});
+}
+generateBtn.addEventListener("click", diplayPassword);
