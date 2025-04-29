@@ -1,17 +1,15 @@
-const lengthSetter = document.getElementById('length-setter');
+const lengthSetter = document.getElementById("length-setter");
 
-function updateSliderBackground() {
-  const min = lengthSetter.min;
-  const max = lengthSetter.max;
-  const val = lengthSetter.value;
+function calculateSetterPct() {
+  const min = Number(lengthSetter.min);
+  const max = Number(lengthSetter.max);
+  const currentValue = Number(lengthSetter.value);
 
-  const percentage = ((val - min) * 100) / (max - min);
+  let percentage = ((currentValue - min) * 100)/(max - min);
 
-  lengthSetter.style.background = `linear-gradient(to right, var(--clr-green200) ${percentage}%, var(--clr-grey700) ${percentage}%)`;
+  lengthSetter.style.background = `linear-gradient(to right, var(--clr-green200) ${percentage}%, var(--clr-grey850) ${percentage}%`;
 }
 
+calculateSetterPct();
 
-updateSliderBackground();
-
-
-lengthSetter.addEventListener('input', updateSliderBackground);
+lengthSetter.addEventListener('input', calculateSetterPct);
