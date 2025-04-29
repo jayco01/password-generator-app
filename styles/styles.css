@@ -39,15 +39,17 @@
 
     --font-size-fluid-0: clamp(1rem, 3.5vw, 1.125rem);
     --font-size-fluid-1: clamp(1rem, 4vw, 1.5rem);
-    --font-size-fluid-2: clamp(1.125rem, 5vw, 1.8rem);
-    --font-size-fluid-3: clamp(1.5rem, 6vw, 2rem);
+    --font-size-fluid-2: clamp(1.125rem, 4vw, 1.8rem);
+    --font-size-fluid-3: clamp(1.5rem, 5.5vw, 2rem);
 
     /* spacing */
     --spacing-8px: 0.5rem;
     --spacing-16px: 1rem;
     --spacing-24px: 1.5rem;
+    --spacing-28px: 1.75rem;
     --spacing-32px: 2rem;
     --spacing-56px: 3.5rem;
+    --spacing-64px: 4rem;
     --spacing-80px: 5rem;
     --spacing-104px: 6.5rem;
     --spacing-124px: 8rem;
@@ -105,7 +107,6 @@ main {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    /* gap: var(--spacing-8px); */
 }
 
 .copy {
@@ -153,13 +154,145 @@ main {
     font-size: var(--font-size-fluid-3);
 }
 
-.option__checkbox {
+#length-setter {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(to right, var(--clr-green200) 0%, var(--clr-grey700) 0%);
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  /* Track and thumb for Chrome/Safari */
+  #length-setter::-webkit-slider-runnable-track {
+    background: transparent; /* We use the main element's background now */
+    height: 8px;
+    border-radius: 5px;
+  }
+  
+  #length-setter::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--clr-green200);
+    margin-top: -6px; /* Center thumb vertically */
+    cursor: pointer;
+  }
+  
+  /* Track and thumb for Firefox */
+  #length-setter::-moz-range-track {
     background: transparent;
+    height: 8px;
+    border-radius: 5px;
+  }
+  
+  #length-setter::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--clr-green200);
+    cursor: pointer;
+  }
+  
 
-    border: 0.2rem solid var(--clr-grey200);
+.option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: var(--spacing-16px);
 }
 
+.option__checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: var(--lh-20px);
+    height: var(--lh-20px);
+    background-color: transparent; 
+    border: 0.15rem solid var(--clr-grey600); 
+    border-radius: 0.25rem;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position:  bottom right;
+    background-size: 90%; 
+  }
+  
+.option__checkbox:checked {
+    background-color: var(--clr-green200); 
+    border-color: var(--clr-green200); 
+    background-image: url('../images/icon-check.svg');
+}
 
+.option-wrapper label {
+    cursor: pointer;
+}
+
+.bot-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-16px);
+}
+
+.strength {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-16px);
+    background-color: var(--clr-grey850);
+}
+
+.strength__title {
+    color: var(--clr-grey600);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-fluid-2024);
+    text-transform: uppercase;
+    font-size: var(--font-size-fluid-0);
+}
+
+.strength__gauge {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-16px);
+
+}
+
+.strength__text {
+    color: var(--clr-grey200);
+    font-size: var(--font-size-fluid-2);
+    line-height: var(--lh-fluid-2432);
+}
+
+.strength__bars {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: var(--spacing-8px);
+}
+
+.strength__bar {
+    box-sizing: border-box;
+    border: 0.125rem solid var(--clr-grey200);
+    padding: 0.875rem 0.25rem;
+}
+  
 #generate {
-    min-width: var(--spacing-56px);
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-16px);
+    justify-content: center;
+    align-items: center;
+    background-color: var(--clr-green200);
+    border: none;
+    padding: var(--spacing-16px);
+    font-weight: var(--fw-bold);
+    font-size: var(--font-size-fluid-1);
+    text-transform: uppercase;
+    line-height: var(--lh-fluid-2024);
 }
