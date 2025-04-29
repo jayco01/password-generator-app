@@ -39,7 +39,7 @@
 
     --font-size-fluid-0: clamp(1rem, 3.5vw, 1.125rem);
     --font-size-fluid-1: clamp(1rem, 4vw, 1.5rem);
-    --font-size-fluid-2: clamp(1.125rem, 4vw, 1.8rem);
+    --font-size-fluid-2: clamp(1.125rem, 4vw, 1.6rem);
     --font-size-fluid-3: clamp(1.5rem, 5.5vw, 2rem);
 
     /* spacing */
@@ -66,7 +66,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    gap: var(--spacing-16px);
+    gap: clamp(var(--spacing-16px), 4vw, var(--spacing-32px));
 }
 
 .title{
@@ -81,7 +81,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: var(--spacing-16px);
+    gap: clamp(var(--spacing-16px), 4vw, var(--spacing-32px));
 }
 
 .ps-output-wrapper {
@@ -90,8 +90,9 @@ main {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: var(--spacing-16px);
+    padding: var(--spacing-16px) clamp(var(--spacing-16px), 4vw, var(--spacing-32px));
     min-width: 21.438rem;
+    width: clamp(21.438rem, 50vw, 33.75rem);
     box-sizing: border-box;
 }
 
@@ -127,15 +128,16 @@ main {
     flex-direction: column;
     justify-content: center;
     gap: var(--spacing-32px);
-    padding: var(--spacing-16px);
+    padding: clamp(var(--spacing-16px), 3.5vw, var(--spacing-32px));
     min-width: 21.438rem;
+    width: clamp(21.438rem, 50vw, 33.75rem);
     box-sizing: border-box;
 }
 
 .length {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-8px)
+    gap: clamp(var(--spacing-8px), 3vw, var(--spacing-32px))
 }
 
 .length__text {
@@ -147,6 +149,7 @@ main {
 
 .label-text {
     color: var(--clr-grey200);
+    font-size: var(--font-size-fluid-0);
 }
 
 .length__display {
@@ -157,46 +160,51 @@ main {
 #length-setter {
     -webkit-appearance: none;
     width: 100%;
-    height: 8px;
+    height: var(--spacing-8px);
     background: linear-gradient(to right, var(--clr-green200) 0%, var(--clr-grey700) 0%);
     border-radius: 5px;
     cursor: pointer;
     outline: none;
-  }
-  
-  /* Track and thumb for Chrome/Safari */
-  #length-setter::-webkit-slider-runnable-track {
-    background: transparent; /* We use the main element's background now */
-    height: 8px;
-    border-radius: 5px;
-  }
-  
-  #length-setter::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--clr-green200);
-    margin-top: -6px; /* Center thumb vertically */
-    cursor: pointer;
-  }
-  
-  /* Track and thumb for Firefox */
-  #length-setter::-moz-range-track {
-    background: transparent;
-    height: 8px;
-    border-radius: 5px;
-  }
-  
-  #length-setter::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--clr-green200);
-    cursor: pointer;
-  }
-  
+}
+
+/* Track and thumb for Chrome/Safari */
+#length-setter::-webkit-slider-runnable-track {
+background: transparent;
+height: var(--spacing-8px);
+border-radius: 5px;
+}
+
+#length-setter::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 1.75rem;
+height: 1.75rem;
+border-radius: 50%;
+background: var(--clr-green200);
+margin-top: -0.6rem; 
+cursor: pointer;
+}
+
+/* Track and thumb for Firefox */
+#length-setter::-moz-range-track {
+background: transparent;
+height: 8px;
+border-radius: 5px;
+}
+
+#length-setter::-moz-range-thumb {
+width: 20px;
+height: 20px;
+border-radius: 50%;
+background: var(--clr-green200);
+cursor: pointer;
+}
+
+.option-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-16px);
+}
 
 .option {
     display: flex;
@@ -212,7 +220,7 @@ main {
     width: var(--lh-20px);
     height: var(--lh-20px);
     background-color: transparent; 
-    border: 0.15rem solid var(--clr-grey600); 
+    border: 0.15rem solid var(--clr-grey200); 
     border-radius: 0.25rem;
     cursor: pointer;
     display: inline-block;
@@ -235,7 +243,7 @@ main {
 .bot-group {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-16px);
+    gap: clamp(var(--spacing-16px), 4vw, var(--spacing-32px));
 }
 
 .strength {
@@ -243,7 +251,7 @@ main {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: var(--spacing-16px);
+    padding: var(--spacing-16px) clamp(var(--spacing-16px), 4vw, var(--spacing-32px));
     background-color: var(--clr-grey850);
 }
 
@@ -290,7 +298,7 @@ main {
     align-items: center;
     background-color: var(--clr-green200);
     border: none;
-    padding: var(--spacing-16px);
+    padding: clamp(var(--spacing-16px), 4vw, var(--spacing-24px));
     font-weight: var(--fw-bold);
     font-size: var(--font-size-fluid-1);
     text-transform: uppercase;
