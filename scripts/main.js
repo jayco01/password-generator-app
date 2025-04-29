@@ -32,28 +32,7 @@ function setSliderColor() {
 setSliderColor();
 lengthSetter.addEventListener('input', setSliderColor);
 
-
-function generatePassword() {
-  let outputPassword = generateRequiredOptions();
-  let numLeftOver = lengthValue - Number(outputPassword.length)
-  
-  for(let i = 0; i <= numLeftOver - 1; i++) {
-    let randomSelected = Math.floor(Math.random() * 10);
-    if (randomSelected >= 0 && randomSelected <= 2) {
-      outputPassword += uppercaseChar;
-    } else if (randomSelected >= 3 && randomSelected <= 5) {
-      outputPassword += lowercaseChar;
-    } else if (randomSelected == 6 || randomSelected == 7) {
-      outputPassword += numbersChar;
-    } else if (randomSelected == 8 || randomSelected == 9) {
-      outputPassword += symbolsChar;
-    } else {
-      console.log("Error: Randon Selected Number is out of Range")
-    }
-  }
-  return outputPassword;
-};
-
+// generate the part of the password that meets the requirements
 function generateRequiredOptions() {
   let requiredOptions = '';
   if (uppercaseCheckbox.checked) {
@@ -71,7 +50,85 @@ function generateRequiredOptions() {
   return requiredOptions
 }
 
+// default character when checkbox is not checked
+function getDefault() {
+  let dafaultChar = '';
+  if (uppercaseCheckbox.checked) {
+    dafaultChar += String.fromCharCode(Math.floor(Math.random()*(90-65+1)) + 65);
+  } 
+  else if (lowercaseCheckbox.checked) {
+    dafaultChar += String.fromCharCode(Math.floor(Math.random()*(122-97+1)) + 97);
+  }
+  else if (numbersCheckbox.checked) {
+    dafaultChar += String.fromCharCode(Math.floor(Math.random()*(57-48+1)) + 48);
+  }
+  else if (symbolsCheckbox.checked) {
+    dafaultChar += String.fromCharCode(Math.floor(Math.random()*(47-33+1)) + 33);
+  }
+  console.log('test')
+  console.log(dafaultChar)
+  return dafaultChar
+}
+
+// generate the entire password
+function generatePassword() {
+  let outputPassword = generateRequiredOptions();
+  let numLeftOver = lengthValue - Number(outputPassword.length)
+  
+  for(let i = 0; i <= numLeftOver - 1; i++) {
+    let randomSelected = Math.floor(Math.random() * 10);
+    if (randomSelected >= 0 && randomSelected <= 2) {
+      if (uppercaseCheckbox.checked){ 
+        outputPassword += uppercaseChar;
+      } else {
+        outputPassword += getDefault();
+      }
+    } 
+    else if (randomSelected >= 3 && randomSelected <= 5) {
+      if (lowercaseCheckbox.checked) {
+        outputPassword += lowercaseChar;
+      } else {
+        outputPassword += getDefault();
+      }
+    } 
+    else if (randomSelected == 6 || randomSelected == 7) {
+      if (numbersCheckbox.checked) {
+      outputPassword += numbersChar
+      } else {
+        outputPassword += getDefault();
+      }
+    } 
+    else if (randomSelected == 8 || randomSelected == 9) {
+      if (symbolsCheckbox.checked) {
+        outputPassword += symbolsChar
+        } else {
+          outputPassword += getDefault();
+        }
+    } 
+    else {
+      console.log("Error: Randon Selected Number is out of Range")
+    }
+  }
+  return outputPassword;
+};
+
+
+// shuffle the order of each letter in the password
+function reshufflePassword(strPassword) {
+  let passwordArray = strPassword.split('');
+
+  passwordArray.sort( function(a,b) {
+    let ramdomNumber = Math.random();
+    return ramdomNumber - 0.5
+  })
+
+  let newPassword = passwordArray.join(''); 
+
+  return newPassword;
+}
+
+// Output password
 generateBtn.addEventListener("click", function() {
   let outputPassword = generatePassword();
-  psOutput.textContent = outputPassword;
+  psOutput.textContent = reshufflePassword(outputPassword);
 });
