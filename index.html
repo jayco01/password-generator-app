@@ -21,18 +21,21 @@
   <main>
     <section class="ps-output-wrapper" aria-label="generate password">
       <p id="ps-output">P4$5W0rD!</p>
-      <button id="copy-btn" aria-label="copy Password to clipboard">
-        <img class="copy-btn__icon" src="images/icon-copy.svg" alt="copy">
-      </button>
+      <div class="copy-wrapper">
+        <p class="copy">copied</p>
+        <button id="copy-btn" aria-label="copy Password to clipboard">
+          <img class="copy-btn__icon" src="images/icon-copy.svg" alt="copy">
+        </button>
+      </div>
     </section> <!--closes ps-output-wrapper-->
 
 
     <section class="parameter">
 
-      <div class="length-wrapper">
-        <div class="length-text">
+      <div class="length">
+        <div class="length__text">
           <label for="length-setter" class="label-text">Character Length</label>
-          <p class="length-display">0</p>
+          <p class="length__display">0</p>
         </div>
         <input type="range" id="length-setter" min="6" max="20" value="10">
       </div> <!--closes length-wrapper-->
