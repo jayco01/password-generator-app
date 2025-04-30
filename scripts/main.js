@@ -43,7 +43,7 @@ lengthSetter.addEventListener('input', setSliderColor);
 // diplay the slider value
 lengthSetter.addEventListener('input', function() {
   lengthDisplay.textContent = Number(lengthSetter.value);
-  diplayPassword();
+  displayPassword();
   copied.classList.add("hidden");
 })
 
@@ -88,7 +88,7 @@ function resetSrengthBar() {
 // display password strength indicator
 function displayStrength() {
   let strengthNum = Number(calculateStrength());
-  strengthNum -= 4;
+  strengthNum -= 4; // Calibration offset. This controls how hard it is to get a strong password. Higher means harder.
   resetSrengthBar();
 
   if (strengthNum <= 5) {
@@ -154,7 +154,7 @@ function generatePassword() {
   let lengthValue = Number(lengthSetter.value);
   let numLeftOver = lengthValue - Number(outputPassword.length)
   
-  for(let i = 0; i <= numLeftOver - 1; i++) {
+  for(let i = 0; i < numLeftOver; i++) {
     let randomSelected = Math.floor(Math.random() * 10);
     if (randomSelected >= 0 && randomSelected <= 2) {
       if (uppercaseCheckbox.checked){ 
@@ -185,7 +185,7 @@ function generatePassword() {
         }
     } 
     else {
-      console.log("Error: Randon Selected Number is out of Range")
+      console.log("Error: Random Selected Number is out of Range")
     }
   }
   return outputPassword;
@@ -206,7 +206,7 @@ function reshufflePassword(strPassword) {
 }
 
 // display password
-function diplayPassword() {
+function displayPassword() {
   let outputPassword = generatePassword();
   if (outputPassword) {
   psOutput.textContent = reshufflePassword(outputPassword);
@@ -216,19 +216,18 @@ function diplayPassword() {
     psOutput.style.color = 'var(--clr-grey700)'
   }
   copied.classList.add("hidden");
-  shrinkPassword();
+  shrinkPassword(outputPassword);
 }
-generateBtn.addEventListener("click", diplayPassword);
+generateBtn.addEventListener("click", displayPassword);
 
 
 // shrink password output when it is too long
-function shrinkPassword() {
-  let passwordLength = generatePassword().length;
+function shrinkPassword(password) {
+  let passwordLength = password.length;
   if (passwordLength > 15) {
     psOutput.classList.add("shrink");
   } else {
     psOutput.classList.remove("shrink");
   }
 }
-generateBtn.addEventListener("click", shrinkPassword)
-lengthSetter.addEventListener("change", shrinkPassword)
+
