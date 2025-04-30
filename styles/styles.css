@@ -100,11 +100,16 @@ main {
     box-sizing: border-box;
 }
 
-#ps-output {
+.ps-output {
     color: var(--clr-grey700);
     font-size: var(--font-size-fluid-3);
     font-weight: var(--fw-bold);
     line-height: var(--lh-fluid-3242);
+    white-space: nowrap;
+}
+
+.ps-output.shrink {
+    font-size: var(--font-size-fluid-2);
 }
 
 .copy-wrapper {

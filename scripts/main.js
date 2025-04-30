@@ -15,11 +15,6 @@ const strengthText = document.querySelector(".strength__text")
 const strengthBarList = document.querySelectorAll(".strength__bar")
 const generateBtn = document.getElementById("generate");
 
-let uppercaseChar = String.fromCharCode(Math.floor(Math.random()*(90-65+1)) + 65);
-let lowercaseChar = String.fromCharCode(Math.floor(Math.random()*(122-97+1)) + 97);
-let numbersChar = String.fromCharCode(Math.floor(Math.random()*(57-48+1)) + 48);
-let symbolsChar = String.fromCharCode(Math.floor(Math.random()*(47-33+1)) + 33);
-
 let strengthList = ["TOO WEAK!", "WEAK", "MODERATE", "STRONG"]
 
 
@@ -219,5 +214,19 @@ function diplayPassword() {
     psOutput.textContent = 'P4$5W0rD!'
   }
   copied.classList.add("hidden");
+  shrinkPassword();
 }
 generateBtn.addEventListener("click", diplayPassword);
+
+
+// shrink password output when it is too long
+function shrinkPassword() {
+  let passwordLength = generatePassword().length;
+  if (passwordLength > 15) {
+    psOutput.classList.add("shrink");
+  } else {
+    psOutput.classList.remove("shrink");
+  }
+}
+generateBtn.addEventListener("click", shrinkPassword)
+lengthSetter.addEventListener("change", shrinkPassword)
