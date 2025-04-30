@@ -159,35 +159,32 @@ function generatePassword() {
   let lengthValue = Number(lengthSetter.value);
   let numLeftOver = lengthValue - Number(outputPassword.length)
   
-  
-  
-  
   for(let i = 0; i <= numLeftOver - 1; i++) {
     let randomSelected = Math.floor(Math.random() * 10);
     if (randomSelected >= 0 && randomSelected <= 2) {
       if (uppercaseCheckbox.checked){ 
-        outputPassword += uppercaseChar;
+        outputPassword += String.fromCharCode(Math.floor(Math.random()*(90-65+1)) + 65);
       } else {
         outputPassword += getDefault();
       }
     } 
     else if (randomSelected >= 3 && randomSelected <= 5) {
       if (lowercaseCheckbox.checked) {
-        outputPassword += lowercaseChar;
+        outputPassword += String.fromCharCode(Math.floor(Math.random()*(122-97+1)) + 97);
       } else {
         outputPassword += getDefault();
       }
     } 
     else if (randomSelected == 6 || randomSelected == 7) {
       if (numbersCheckbox.checked) {
-      outputPassword += numbersChar
+      outputPassword += String.fromCharCode(Math.floor(Math.random()*(57-48+1)) + 48);
       } else {
         outputPassword += getDefault();
       }
     } 
     else if (randomSelected == 8 || randomSelected == 9) {
       if (symbolsCheckbox.checked) {
-        outputPassword += symbolsChar
+        outputPassword += String.fromCharCode(Math.floor(Math.random()*(47-33+1)) + 33);
         } else {
           outputPassword += getDefault();
         }
