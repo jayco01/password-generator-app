@@ -133,8 +133,8 @@ main {
 }
 
 #copy-btn:focus {
-    outline: 0.15rem solid var(--clr-green200);
-    outline-offset: 0.2rem;
+    outline: 0.05rem solid var(--clr-green200);
+    outline-offset: none;
 }
 
 .parameter {
