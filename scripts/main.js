@@ -15,8 +15,6 @@ const strengthText = document.querySelector(".strength__text")
 const strengthBarList = document.querySelectorAll(".strength__bar")
 const generateBtn = document.getElementById("generate");
 
-let lengthValue = Number(lengthDisplay.textContent);
-
 let uppercaseChar = String.fromCharCode(Math.floor(Math.random()*(90-65+1)) + 65);
 let lowercaseChar = String.fromCharCode(Math.floor(Math.random()*(122-97+1)) + 97);
 let numbersChar = String.fromCharCode(Math.floor(Math.random()*(57-48+1)) + 48);
@@ -85,6 +83,7 @@ function updateSrengthBar(num, color) {
   }
 }
 
+// reset the strength bar colors to transparent
 function resetSrengthBar() {
   for (let i = 0; i <= 3; i++) {
     strengthBarList[i].style.backgroundColor = 'transparent';
@@ -94,7 +93,7 @@ function resetSrengthBar() {
 // display password strength indicator
 function displayStrength() {
   let strengthNum = Number(calculateStrength());
-  strengthNum -= 2;
+  strengthNum -= 4;
   resetSrengthBar();
 
   if (strengthNum <= 5) {
@@ -157,7 +156,11 @@ function getDefault() {
 // generate the entire password
 function generatePassword() {
   let outputPassword = generateRequiredOptions();
+  let lengthValue = Number(lengthSetter.value);
   let numLeftOver = lengthValue - Number(outputPassword.length)
+  
+  
+  
   
   for(let i = 0; i <= numLeftOver - 1; i++) {
     let randomSelected = Math.floor(Math.random() * 10);
