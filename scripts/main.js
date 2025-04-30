@@ -1,5 +1,5 @@
 const psOutput = document.getElementById("ps-output");
-const copied = document.querySelector(".copy");
+const copied = document.getElementById("copy");
 const copyBtn = document.getElementById("copy-btn");
 
 const lengthDisplay = document.querySelector(".length__display");
@@ -11,6 +11,8 @@ const numbersCheckbox = document.getElementById("numbers");
 const symbolsCheckbox =  document.getElementById("symbols");
 const optionsList = document.querySelectorAll(".option__checkbox");
 
+const strengthText = document.querySelector(".strength__text")
+const strengthBarList = document.querySelectorAll(".strength__bar")
 const generateBtn = document.getElementById("generate");
 
 let lengthValue = Number(lengthDisplay.textContent);
@@ -20,13 +22,17 @@ let lowercaseChar = String.fromCharCode(Math.floor(Math.random()*(122-97+1)) + 9
 let numbersChar = String.fromCharCode(Math.floor(Math.random()*(57-48+1)) + 48);
 let symbolsChar = String.fromCharCode(Math.floor(Math.random()*(47-33+1)) + 33);
 
+let strengthList = ["TOO WEAK!", "WEAK", "MODERATE", "STRONG"]
+
 
 // copy text to clipboard
 copyBtn.addEventListener('click', function() {
   let outputPassword = psOutput.textContent;
 
   navigator.clipboard.writeText(outputPassword);
+  copied.classList.remove("hidden");
 });
+
 
 // calculating how much of the slider will be colored with green
 function setSliderColor() {
@@ -41,10 +47,75 @@ function setSliderColor() {
 setSliderColor();
 lengthSetter.addEventListener('input', setSliderColor);
 
+// diplay the slider value
 lengthSetter.addEventListener('input', function() {
   lengthDisplay.textContent = Number(lengthSetter.value);
   diplayPassword();
+  copied.classList.add("hidden");
 })
+
+
+// calculate the password strength
+function calculateStrength() {
+  let strengthNum = 0;
+  let charLength = Number(lengthDisplay.textContent);
+
+  optionsList.forEach(option => {
+    if (option.checked) {
+      strengthNum += 3;
+    }
+  });
+
+  if (charLength <= 5) {
+    strengthNum += 2;
+  }  else if (charLength > 5 && charLength <= 10) {
+    strengthNum += 4;
+  } else if (charLength > 10 && charLength <= 15) {
+    strengthNum += 6;
+  } else if (charLength > 15 && charLength <= 20) {
+    strengthNum += 8;
+  }
+  return strengthNum;
+}
+
+// looping through each strength bar to change its color
+function updateSrengthBar(num, color) {
+  for (let i = 0; i <= num; i++) {
+    strengthBarList[i].style.backgroundColor = color;
+  }
+}
+
+function resetSrengthBar() {
+  for (let i = 0; i <= 3; i++) {
+    strengthBarList[i].style.backgroundColor = 'transparent';
+    }
+  }
+
+// display password strength indicator
+function displayStrength() {
+  let strengthNum = Number(calculateStrength());
+  strengthNum -= 2;
+  resetSrengthBar();
+
+  if (strengthNum <= 5) {
+    strengthText.textContent = strengthList[0];
+    updateSrengthBar(0,"var(--clr-red500)");
+  }  else if (strengthNum > 5 && strengthNum <= 10) {
+    strengthText.textContent = strengthList[1];
+    updateSrengthBar(1,"var(--clr-orange400)");
+  } else if (strengthNum > 10 && strengthNum <= 15) {
+    strengthText.textContent = strengthList[2];
+    updateSrengthBar(2,"var(--clr-yellow300)");
+  } else if (strengthNum > 15 && strengthNum <= 20) {
+    strengthText.textContent = strengthList[3];
+    updateSrengthBar(3,"var(--clr-green200)");
+  }
+}
+optionsList.forEach(checkbox => {
+  checkbox.addEventListener("click", displayStrength);
+});
+lengthSetter.addEventListener("change", displayStrength);
+
 
 
 // generate the part of the password that meets the requirements
@@ -147,5 +218,6 @@ function diplayPassword() {
   } else {
     psOutput.textContent = 'P4$5W0rD!'
   }
+  copied.classList.add("hidden");
 }
 generateBtn.addEventListener("click", diplayPassword);

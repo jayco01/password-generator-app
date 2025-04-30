@@ -58,6 +58,10 @@
     --spacing-184px: 11.5rem;
 }
 
+.hidden {
+    display: none;
+}
+
 body {
     background: var(--background-gradient);
     font-family: var(--ff-jetbrains-mono);
@@ -110,7 +114,7 @@ main {
     align-items: center;
 }
 
-.copy {
+#copy {
     color: var(--clr-green200);
     font-size: var(--font-size-fluid-0);
     text-transform: uppercase;
@@ -171,35 +175,35 @@ main {
 
 /* Track and thumb for Chrome/Safari */
 #length-setter::-webkit-slider-runnable-track {
-background: transparent;
-height: var(--spacing-8px);
-border-radius: 5px;
+    background: transparent;
+    height: var(--spacing-8px);
+    border-radius: 5px;
 }
 
 #length-setter::-webkit-slider-thumb {
--webkit-appearance: none;
-appearance: none;
-width: 1.75rem;
-height: 1.75rem;
-border-radius: 50%;
-background: var(--clr-grey200);
-margin-top: -0.6rem; 
-cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    background: var(--clr-grey200);
+    margin-top: -0.6rem; 
+    cursor: pointer;
 }
 
 /* Track and thumb for Firefox */
-#length-setter::-moz-range-track {
-background: transparent;
-height: var(--spacing-8px);
-border-radius: 5px;
+    #length-setter::-moz-range-track {
+    background: transparent;
+    height: var(--spacing-8px);
+    border-radius: 5px;
 }
 
 #length-setter::-moz-range-thumb {
-width: 1.75rem;
-height: 1.75rem;
-border-radius: 50%;
-background: var(--clr-grey200);
-cursor: pointer;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    background: var(--clr-grey200);
+    cursor: pointer;
 }
 
 .option-wrapper {
@@ -307,4 +311,5 @@ cursor: pointer;
     font-size: var(--font-size-fluid-1);
     text-transform: uppercase;
     line-height: var(--lh-fluid-2024);
+    cursor: pointer;
 }
