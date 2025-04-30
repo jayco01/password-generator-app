@@ -210,8 +210,10 @@ function diplayPassword() {
   let outputPassword = generatePassword();
   if (outputPassword) {
   psOutput.textContent = reshufflePassword(outputPassword);
+  psOutput.style.color = 'var(--clr-grey200)';
   } else {
-    psOutput.textContent = 'P4$5W0rD!'
+    psOutput.textContent = 'P4$5W0rD!';
+    psOutput.style.color = 'var(--clr-grey700)'
   }
   copied.classList.add("hidden");
   shrinkPassword();

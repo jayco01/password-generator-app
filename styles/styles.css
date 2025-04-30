@@ -172,7 +172,6 @@ main {
     -webkit-appearance: none;
     width: 100%;
     height: var(--spacing-8px);
-    /* background: linear-gradient(to right, var(--clr-green200) 0%, var(--clr-grey850) 0%); */
     border-radius: 5px;
     cursor: pointer;
     outline: none;
@@ -194,10 +193,16 @@ main {
     background: var(--clr-grey200);
     margin-top: -0.6rem; 
     cursor: pointer;
+    border: 0.125rem solid transparent;
+}
+
+#length-setter::-webkit-slider-thumb:active {
+    background: var(--clr-grey850);
+    border: 0.125rem solid var(--clr-green200);
 }
 
 /* Track and thumb for Firefox */
-    #length-setter::-moz-range-track {
+#length-setter::-moz-range-track {
     background: transparent;
     height: var(--spacing-8px);
     border-radius: 5px;
@@ -209,6 +214,12 @@ main {
     border-radius: 50%;
     background: var(--clr-grey200);
     cursor: pointer;
+    border: 0.125rem solid transparent;
+}
+
+#length-setter::-moz-range-thumb:active {
+    background: var(--clr-grey850);
+    border: 0.125rem solid var(--clr-green200);
 }
 
 .option-wrapper {
@@ -317,4 +328,13 @@ main {
     text-transform: uppercase;
     line-height: var(--lh-fluid-2024);
     cursor: pointer;
+    border: 0.125rem solid var(--clr-green200);
+    box-sizing: border-box;
+}
+
+#generate:hover {
+    color: var(--clr-green200);
+    background-color: transparent;
+    border: 0.125rem solid var(--clr-green200);
+    box-sizing: border-box;
 }
