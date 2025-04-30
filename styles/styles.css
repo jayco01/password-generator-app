@@ -132,6 +132,11 @@ main {
     cursor: pointer;
 }
 
+#copy-btn:focus {
+    outline: 0.15rem solid var(--clr-green200);
+    outline-offset: 0.2rem;
+}
+
 .parameter {
     background-color: var(--clr-grey800);
     display: flex;
@@ -258,6 +263,11 @@ main {
     background-image: url('../images/icon-check.svg');
 }
 
+.option__checkbox:focus {
+    outline: 0.15rem solid var(--clr-green200);
+    outline-offset: 0.2rem;
+}
+
 .option-wrapper label {
     cursor: pointer;
 }
@@ -337,4 +347,9 @@ main {
     background-color: transparent;
     border: 0.125rem solid var(--clr-green200);
     box-sizing: border-box;
+}
+
+#generate:focus {
+    outline: 0.15rem solid var(--clr-green200);
+    outline-offset: 0.2rem;
 }
