@@ -334,7 +334,7 @@ main {
     border: none;
     padding: clamp(var(--spacing-16px), 4vw, var(--spacing-24px));
     font-weight: var(--fw-bold);
-    font-size: var(--font-size-fluid-1);
+    font-size: var(--font-size-fluid-0);
     text-transform: uppercase;
     line-height: var(--lh-fluid-2024);
     cursor: pointer;
